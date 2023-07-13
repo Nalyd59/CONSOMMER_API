@@ -40,3 +40,7 @@ Démo en ligne via Github Pages
 ## Livrable
 
 Dépôt Github, un Github Pages
+
+## Auteur
+
+Fournier Ludovic
