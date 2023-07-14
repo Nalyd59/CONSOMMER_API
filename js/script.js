@@ -1,36 +1,49 @@
-// Votre code Javascript ici
+window.onload =  function () {
 
-window.onload = function () {
-    let requestGET = async function(url){
-        const requestGET = new Request(url,{
-            method: 'GET',
-            headers: {
-                'content-type' : 'application/json',
-            },
-            body: {
-                /*
+   
+    fetch('https://reqres.in/api/users?per_page=',{
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data => handleUsers(data))
+
+
+    
+    function handleUsers(data) {
+        let ul = document.getElementById('list');
+       
+            data.data.forEach(users => {
+    
+                let p1 =  document.createElement("li");
+                p1.innerHTML = users.first_name;
+                ul.appendChild(p1);
+    
+                let p2 =  document.createElement("li");
+                p2.innerHTML = users.last_name;
+                ul.appendChild(p2);
+    
+    
+                let li = document.createElement("li");
+                li.innerHTML = users.email;
+                ul.appendChild(li);
                 
-                */
-            }
+    
+                let img =  document.createElement("img");
+                img.src = users.avatar;
+                ul.appendChild(img);
         });
     }
-}
-const res = await fetch(requestGET);
-console.log(res);
-let liste = [];
-if (!res) {
-    console.log('error');
-}else {
-    /*
-    if (condition) {
-        
-    }else{
-
-    }
-    */
+   
 }
 
-/*
-fetch('http://reqres.in/api/users?per_page=+12')
-    .then(r => r.json())
-    .then(data => console.log(data.data[0].id))*/
+  
+  
+
+
+
+
+
+
