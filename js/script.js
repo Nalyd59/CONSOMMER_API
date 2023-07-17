@@ -1,7 +1,7 @@
 window.onload =  function () {
 
-   
-    fetch('https://reqres.in/api/users?per_page=',{
+    let nb = 12;
+    fetch('https://reqres.in/api/users?per_page='+nb,{
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -9,34 +9,29 @@ window.onload =  function () {
     })
     .then(response => response.json())
     .then(data => handleUsers(data))
-
-
+    .catch(error => console.log(error));
     
     function handleUsers(data) {
-        let ul = document.getElementById('list');
+        
+        let div = document.getElementById('list');
        
             data.data.forEach(users => {
     
-                let p1 =  document.createElement("li");
-                p1.innerHTML = users.first_name;
-                ul.appendChild(p1);
-    
-                let p2 =  document.createElement("li");
-                p2.innerHTML = users.last_name;
-                ul.appendChild(p2);
-    
-    
-                let li = document.createElement("li");
-                li.innerHTML = users.email;
-                ul.appendChild(li);
-                
-    
+                const card = document.createElement('div');
+                card.addEventListener('click', () => openModal(user));
+
+                let p1 =  document.createElement("p");
+                let p2 = document.createElement("p");
                 let img =  document.createElement("img");
+                p1.innerHTML = users.first_name +' '+ users.last_name;
+                p2.innerHTML = users.email;
                 img.src = users.avatar;
-                ul.appendChild(img);
+                card.appendChild(img);
+                card.appendChild(p1);
+                card.appendChild(p2);
+                div.appendChild(card);
         });
     }
-   
 }
 
   

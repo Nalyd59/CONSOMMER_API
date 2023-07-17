@@ -6,3 +6,22 @@
 h1 {
 	text-align: center;
 }
+.users{
+	display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+.users > div{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 15px;
+}
+.users > div:hover{
+	background-color: antiquewhite; 
+}
